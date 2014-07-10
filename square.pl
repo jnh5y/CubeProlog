@@ -19,6 +19,10 @@ oddSum(A, B, C, D) :-
   Sum = A + B + C + D,
   odd(Sum).
   
+sq(E1, E2, E3, E4) :- 
+  color(E1), color(E2), color(E3), color(E4), 
+  oddSum(E1, E2, E3, E4).
+  
 square(E1, E2, E3, E4) :- color(E1), color(E2), color(E3), color(E4), 
     oddSum(E1, E2, E3, E4).
 
