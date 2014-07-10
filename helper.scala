@@ -1,4 +1,4 @@
-
+/*Generate list of 0s and s1*/
 def binN(n: Int): List[String] = {
   n match {
     case 1 => List("0", "1")
@@ -9,16 +9,21 @@ def binN(n: Int): List[String] = {
   }
 }  
 
+
 def addE(s: String): List[String] = (s.toCharArray ++ "e").permutations.toList.map(_.mkString)
 
 val e3 = binN(2).flatMap(addE).map(_.mkString).toSet
 
 val pairs = (1 to 4).combinations(2).toList
 
+/*all pairs*/
 val b2 = binN(2)
 
 val prod = for { b <- b2; p <- pairs } yield (b, p)
 
+/* Pick pairs of numbers that satisfies certain condition*/
+/*we have the pattern and we have the place*/
+/*whatever place we're in must match one character in the pattern*/
 val ls = prod.map { case (pattern, place) =>
   e4.filter( s => s(place(0)-1) == pattern(0) &&
                   s(place(1)-1) == pattern(1))
